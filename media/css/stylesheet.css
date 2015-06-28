@@ -225,3 +225,38 @@ background:#f9fc9c
     overflow-y:scroll;
     height:90%;
 }
+
+/* View Details */
+.view-details span.label{
+  font-size:12px;
+}
+.view-details{
+
+  border-bottom:1px solid #ccc;
+}
+.history-list .handle {
+  margin: 15px 0px 10px;
+  display: block;
+  color: #2bce4e;
+  cursor:pointer;
+  max-width:150px;
+}
+.h-list{
+  display:none;
+}
+.h-list .h div{
+  font-size:12px;
+  float:left;
+  padding:0px 2px 0px 2px;
+}
+
+.h-list ul {
+  margin: 0px;
+  padding:0px !important;
+}
+.h-list ul li {
+  float: none;
+  padding: 8px 0px 10px !important;
+  clear: both;
+  list-style: none;
+}

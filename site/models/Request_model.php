@@ -19,6 +19,26 @@ class Request_model extends CI_Model{
 		return $query;
 	}
 
+	public function get_collection_by_id($request_id){
+		$query = $this->db->query("SELECT e.*,log.* FROM request_information_table as e INNER JOIN request_logs as log
+								ON e.request_id = log.request_id INNER JOIN( 
+										SELECT request_id, MAX(date_created) maxDate
+     								     FROM request_logs 
+									        GROUP BY request_id
+									    ) b ON log.request_id = b.request_id AND
+									            log.date_created = b.maxDate WHERE e.request_id = '$request_id' ORDER BY e.date_created DESC");
+		return $query;
+	}
+
+	public function get_logs($request_id){
+
+		$query = $this->db->query("SELECT * FROM request_logs WHERE request_id = '$request_id'");
+		
+
+		return $query;
+
+	}
+
 	public function insert_to_request_table($data){
 
 		$this->db->insert('request_information_table', $data);

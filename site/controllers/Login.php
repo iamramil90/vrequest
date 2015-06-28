@@ -5,11 +5,13 @@ class Login extends CI_Controller{
 	public function __construct(){
 
 		parent::__construct();
-		$user = $this->session->userdata();
+		
 	}
 
 	public function index(){
-		
+
+		$user = $this->session->userdata();
+	
 		if(isset($user['log_in']) == 1){
 			redirect('home');
 		}else{
@@ -53,7 +55,7 @@ class Login extends CI_Controller{
 	}
 
 	public function user_logout(){
-
+		$user = $this->session->userdata();
 		unset($user['log_in']);
 		redirect('login');
 	}

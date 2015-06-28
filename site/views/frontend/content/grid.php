@@ -16,7 +16,7 @@
 			<td>
 				<?php 
 					$date_time = strtotime($item->request_date);
-					echo date('F d, Y H:i:s a',$date_time);
+					echo date('F d, Y h:i:s a',$date_time);
 				?>
 
 			</td>

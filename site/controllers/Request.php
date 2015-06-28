@@ -40,9 +40,17 @@ class Request extends CI_Controller{
 		$this->load->view('template',$data);
 	}
 
-	public function view(){
+	public function view($page_id){
 
-		print_r($_GET);
+		$user['info'] = $this->session->userdata();
+		$user['collection'] = $this->request_model->get_collection_by_id($page_id);
+		$user['logs'] = $this->request_model->get_logs($page_id);
+		$user['page_id'] = $page_id;
+		$data['title'] = "Request Vehicle"; 
+		$data['content'] = $this->load->view('frontend/content/view',$user,true);
+		$data['header'] = $this->load->view('frontend/html/header',$user,true);
+		$data['sidebar'] = $this->load->view('frontend/html/sidebar',null,true);
+		$this->load->view('template',$data);
 	}
 	public function add_new(){
 
