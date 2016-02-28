@@ -64,10 +64,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => 'Lemarz_12',
-	'database' => 'db_vrsite',
+	'hostname' => CONFIG::HOSTNAME,
+	'username' => CONFIG::USERNAME,
+	'password' => CONFIG::PASSWORD,
+	'database' => CONFIG::DBNAME,
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
