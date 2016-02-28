@@ -12,7 +12,7 @@ class Config{
    
     const PASSWORD = "password";
     
-    const DBNAME = "db_vr";
+    const DBNAME = "rhgonzal_dbvrequest";
     
-    
+    const BASEURL = "http://vrequest.local/";
 }
