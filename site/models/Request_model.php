@@ -7,6 +7,20 @@ class Request_model extends CI_Model{
 		parent::__construct();
 	}
 
+	public function get_collection_bypage($user_id,$page=1,$limit = 10){
+
+		$count = ($page - 1) * $limit;
+		$query = $this->db->query("SELECT e.*,log.* FROM request_information_table as e INNER JOIN request_logs as log
+								ON e.request_id = log.request_id INNER JOIN( 
+										SELECT request_id, MAX(date_created) maxDate
+     								     FROM request_logs 
+									        GROUP BY request_id
+									    ) b ON log.request_id = b.request_id AND
+									            log.date_created = b.maxDate WHERE e.requestor_id = '$user_id' ORDER BY e.date_created ASC limit {$count},{$limit} ");
+		return $query;
+
+	}
+
 	public function get_collection($user_id){
 
 		$query = $this->db->query("SELECT e.*,log.* FROM request_information_table as e INNER JOIN request_logs as log

@@ -4,9 +4,8 @@
 	</div>
 	<div class="fr">
 		<ul class="tabs">
-			<li class="calendar">
-				<i class="fa fa-calendar">&nbsp;&nbsp;<?php echo date("F d, Y : h:i:s a") ?></i>
-
+			<li class="calendar ">
+				<div class="uk-text-bold"><?php echo date("F d, Y : h:i:s a") ?></div>
 			</li>
 			<li>
 				<i class="fa  fa-bell fa-fw"></i> 

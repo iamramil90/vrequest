@@ -1,29 +1,29 @@
-<div class="grid">
-	<h1> Manage Requests</h1>
-	<div class="table-grid">
-		<table>
+<div class="grid uk-block">
+	<h2 class="uk-h2"> Manage Requests</h2>
+	<hr>
+	<div class="">
+		<table class="tblgrid uk-table uk-table-hover uk-table-striped">
+
+			<thead>
 			<th>Request ID</th>
 			<th>Vehicle Name</th>
 			<th>Request Date</th>
 			<th>Status</th>
 			<th></th>
 
-		<?php
-		foreach($collection->result() as $item){ ?>
-		<tr>
-			<td><?php echo $item->request_id ?></td>
-			<td><?php echo $item->vehicle_name ?></td>
-			<td>
-				<?php 
-					$date_time = strtotime($item->request_date);
-					echo date('F d, Y h:i:s a',$date_time);
-				?>
+			</thead>
 
-			</td>
-			<td><?php echo $this->status->gettext($item->request_status) ?></td>
-			<td><a href="javascript:void(0)" onclick="location.href='<?php echo base_url('request/view/'.$item->request_id)?>'">View</a></td>
-		</tr>
-		<?php } ?>
+		<tbody>
+
+		</tbody>
+
 		</table>
+		<div class="uk-block">
+
+			<ul class="uk-pagination " data-ajax-url="<?php echo base_url('collection/request_details') ?>" data-uk-pagination="{items:<?php echo $total_collection ?>, itemsOnPage:<?php echo Config::PAGE_LIMIT ?>,lblPrev: 'Prev', lblNext: 'Next'}">
+
+			</ul>
+		</div>
+
 	</div>
 </div>

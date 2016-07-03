@@ -19,8 +19,9 @@ class Request extends CI_Controller{
 		$user['info'] = $this->session->userdata();
 		$user_id = $user['info']['user_id'];
 
-		$result = $this->request_model->get_collection($user_id);
+		$result = $this->request_model->get_collection_bypage($user_id);
 		$user['collection'] = $result;
+		$user['total_collection'] =  $this->request_model->get_collection($user_id)->num_rows();
 
 		$data['title'] = "Request Vehicle"; 
 		$data['content'] = $this->load->view('frontend/content/grid',$user,true);
@@ -54,21 +55,17 @@ class Request extends CI_Controller{
 	}
 	public function add_new(){
 
-		
+
 		$user = $this->session->userdata();
 		$post_data = $this->input->post();
 
-		$arr_date = array(
-			'requestor_id' => $user['user_id'],
-			'requestor_name' => $user['fullname'],
-			'vehicle_name' => $post_data['vehicle_name'],
-			'vehicle_plate_no' => $post_data['vehicle_plate_no'],
-			'request_date' => $post_data['request_date'],
-			'request_location' => $post_data['request_location'],
-			'location_coordinates' => ""
-		);
 
-		$this->request_model->insert_to_request_table($arr_date);
+
+		$post_data['requestor_id'] = $user['user_id'];
+		$post_data['requestor_name'] = $user['fullname'];
+
+
+		$this->request_model->insert_to_request_table($post_data);
 
 		redirect('request');
 	}
